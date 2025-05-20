@@ -7,3 +7,4 @@ export const LOGIN_URL = BASE_URL + '/api/login';
 //google
 //twitter
 //instagram
+//Snapchat
