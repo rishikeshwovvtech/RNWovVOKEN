@@ -69,7 +69,17 @@
     "react-native-version-check": "^3.5.0",
     "react-native-webview": "^13.13.5",
     "rn-fetch-blob": "^0.12.0",
-    "rn-tourguide": "^3.3.2"
+    "rn-tourguide": "^3.3.2",
+    "@react-native-community/push-notification-ios": "^1.10.1",
+    "@react-native-firebase/analytics": "14.12.0",
+    "@react-native-firebase/app": "14.12.0",
+    "@react-native-firebase/database": "14.12.0",
+    "@react-native-firebase/dynamic-links": "^14.12.0",
+    "@react-native-firebase/messaging": "^14.12.0",
+    "@react-native-firebase/remote-config": "14.12.0",
+    "react-native-push-notification": "^8.1.1",
+    "@react-native-firebase/crashlytics": "^14.12.0",
+    "socket.io-client": "^4.8.1"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
