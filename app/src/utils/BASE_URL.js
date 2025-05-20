@@ -1,0 +1,1 @@
+export const BASE_URL = 'ENTER_UAT_SERVER_URL_HERE';
