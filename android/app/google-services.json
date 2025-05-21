@@ -1,0 +1,71 @@
+{
+  "project_info": {
+    "project_number": "907921533624",
+
+    "project_id": "nexusone-5f77e",
+    "storage_bucket": "nexusone-5f77e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:907921533624:android:46bf67bc9f523b05d2e24d",
+        "android_client_info": {
+          "package_name": "com.testproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "907921533624-edlca9b0i594q98mhs5vvfs42ohuooqr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nexusone",
+            "certificate_hash": "fe12062f92ab47b59c47a039662c774fda4ee060"
+          }
+        },
+        {
+          "client_id": "907921533624-n7opb6codemjq8fjpeb26fmda4okrvfs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nexusone",
+            "certificate_hash": "b400744941d4d5a0d81fd6c6c99141f5e354ec75"
+          }
+        },
+        {
+          "client_id": "907921533624-npe5g0klr8tjjjdcjen6tmskq8s5l7ee.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nexusone",
+            "certificate_hash": "be0b6dc170acae6d11acd05170eca9562dc0a8a3"
+          }
+        },
+        {
+          "client_id": "907921533624-hv49pf384ta33rl2su209heqp83lri50.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_aXOeYwK0_J1trx0d0Lr1ydCSrlMGZok"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "907921533624-hv49pf384ta33rl2su209heqp83lri50.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "907921533624-pk5rveqflhfrma23h85mfobrip0s9gtd.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.nexusone"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

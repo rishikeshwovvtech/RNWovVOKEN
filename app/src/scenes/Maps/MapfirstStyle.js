@@ -1,112 +1,82 @@
 import {StyleSheet} from 'react-native';
-
+//local import
+import {dimensions} from '../../../res/dimensions';
 import R from '../../R';
-import scale from '../../utils/Scale';
+
 export default StyleSheet.create({
-  view: {
-    backgroundColor: R.colors.coolGrey,
-    flex: 4
-  },
-  headerView:{
-    height: scale(45),
-    width: scale(400),
-    backgroundColor: R.colors.white,
-    flexDirection: 'row',
+  imageBackgroundContainer: {
+    height: '100%',
+    width: '100%',
+    justifyContent: 'center',
     alignItems: 'center',
-    paddingTop: scale(10),
-    paddingBottom: scale(25),
   },
-  searchImage:{
-    marginTop: scale(10),
-    marginLeft: scale(10),
-    width: scale(22),
-    height: scale(22),
+  logoImage: {
+    height: R.dimensions.wp(30),
+    width: R.dimensions.wp(60),
   },
-  closeImage:{
-      marginTop: scale(10),
-      marginLeft: scale(10),
-      width: scale(15),
-      height: scale(15),
+  text1: {
+    color: R.themes.darkTextColor,
+    fontFamily: R.fonts.primaryRegular,
+    fontSize: R.dimensions.hp('1.6%'),
+    textAlign: 'center',
+    lineHeight: 15,
+    fontWeight: '400',
+    flex: 0.3,
   },
-  images:{
-    flex: 9,
-    width: scale(400),
+  text2: {
+    color: R.themes.darkTextColor,
+    fontFamily: R.fonts.primaryBold,
+    fontSize: R.dimensions.hp('2.2%'),
+    marginTop: '5%',
+    textAlign: 'center',
+    flex: 0.2,
   },
-  bottomView1:{
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-
-  textInput:{
-    borderBottomWidth:scale(0.8),
-    borderBottomColor: R.colors.coolGrey,
-    marginLeft: scale(10),
-    width:'65%',
-    height:scale(45)
-  },
-  imgView: {
-    backgroundColor: R.colors.white,
-    position: 'absolute',
-    borderRadius: scale(20),
-    top: scale(480),
-    left: scale(320),
+  text3: {
+    color: R.themes.darkTextColor,
+    fontFamily: R.fonts.primaryBold,
+    fontSize: R.dimensions.hp('2.2%'),
+    textAlign: 'center',
+    flex: 0.2,
   },
 
-  locImg: {
-    height: scale(25),
-    width: scale(25),
-    margin: scale(8),
-  },
-  bottomView: {
-    backgroundColor: R.colors.white,
-  },
-  storeView: {
-    backgroundColor: R.colors.blueviolet,
-    margin: scale(10),
-    borderRadius: scale(20),
-  },
-  storeText: {
-    color: R.colors.white,
-    paddingTop: scale(10),
-    paddingBottom: scale(10),
-    paddingLeft: scale(20),
-    paddingRight: scale(20),
-  },
-  lastImg: {
-    height: scale(15),
-    width: scale(15),
-    margin:scale(20)
-  },
-  shopImg: {
-    alignSelf: 'center',
-    width: scale(70),
-    height: scale(45),
-  },
-  heartImg: {
-    alignSelf: 'center',
-    marginLeft: scale(80),
-    width: scale(30),
-    height: scale(30),
-  },
-  navigateImg: {
-    alignSelf: 'center',
-    marginLeft: scale(10),
-    width: scale(30),
-    height: scale(30),
-  },
-  nameText:{
-    fontSize: scale(15),
-    fontWeight: 'bold'
-  },
-  floorText:{
-    fontSize: scale(12),
-    color: R.colors.coolGrey
-  },
-  childView:{
+  servicemainView: {
     flexDirection: 'row',
-    marginTop: scale(10),
-    marginLeft: scale(20),
-    paddingLeft: scale(15),
-    paddingBottom: scale(25),
-  }
+    marginVertical: '4%',
+    width: R.dimensions.wp(30),
+  },
+  serviceimgView: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: '4%',
+    alignSelf: 'center',
+  },
+  serviceimg: {
+    height: R.dimensions.wp(5),
+    width: R.dimensions.wp(5),
+    tintColor: R.themes.darkButtonColor,
+  },
+  servicetext: {
+    fontFamily: R.fonts.primaryRegular,
+    fontSize: R.dimensions.wp(4),
+    color: R.themes.darkButtonColor,
+    marginStart: '10%',
+  },
+  navigateButtonContainer: {
+    backgroundColor: R.themes.darkCardBackgroundColor,
+    margin: '5%',
+    // width: R.dimensions.wp(30),
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignContent: 'center',
+    alignSelf: 'center',
+    paddingVertical: '2%',
+    paddingHorizontal: '3%',
+    flexDirection: 'row',
+    borderRadius: 3,
+  },
+  navigateButtonText: {
+    fontFamily: R.fonts.primaryMedium,
+    fontSize: R.dimensions.wp(3.5),
+    color: R.themes.darkTextColor,
+  },
 });

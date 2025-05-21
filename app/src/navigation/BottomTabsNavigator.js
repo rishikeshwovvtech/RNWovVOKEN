@@ -1,315 +1,136 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {Image, TouchableOpacity} from 'react-native';
-import R from '../R';
-import Home from '../scenes/Home/Home';
-import Map from '../scenes/Maps/MapsFirst';
-import QrCode from '../scenes/ShoppingList/QrCode';
-import Explore from '../scenes/ExploreScreen';
 import {createStackNavigator} from '@react-navigation/stack';
-import {HeaderTitle} from '../components/HeaderTitle';
+
+import {CardStyleInterpolators} from '@react-navigation/stack';
+//local imports
+// import {Directory} from '../scenes/Mall/MallDetails/MallDetails';
+import {BrandListing} from '../scenes/Mall/BrandListing/BrandListing';
+import {BrandDetails} from '../scenes/Mall/BrandDetails/BrandDetails';
+import {Home} from '../scenes/Home/Home';
+import NewVoucherDetails from '../scenes/Loyalty/VoucherDetail/NewVoucherDetail';
+import {Offer} from '../scenes/Offer/Offer/Offer';
+import {BrandOffers} from '../scenes/Offer/ViewAllCategoryOffers';
+import {TabBar} from '../components/index';
+import {SocialFeeds} from '../scenes/SocialFeeds/SocialFeeds';
+import {OfferByCategory} from '../scenes/Offer/OfferByCategory';
+import {Amenities} from '../scenes/Mall/Amenities/Amenities';
+import {MapFirstPage} from '../scenes/Maps/MapFirstPage';
+import {UploadBillCapture} from '../scenes/Loyalty/UploadBillCapture/UploadBillCapture';
+import {SmartParking} from '../scenes/SmartParking/SmartParking/SmartParking';
+import {SmartParkingTwo} from '../scenes/SmartParking/SmartParkingTwo/SmartParkingTwo';
+import {SmartParkingThree} from '../scenes/SmartParking/SmartParkingThree/SmartParkingThree';
+import {RewardsLanding} from '../scenes/Loyalty/RewardLanding/RewardsLanding';
+import {RewardsDetail} from '../scenes/Loyalty/RewardsDetail/RewardsDetail';
+import {Directory} from '../scenes/Mall/MallDetails/MallDetails';
+import {TourGuideZone, useTourGuideController} from 'rn-tourguide';
+
 const stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
-import Event from '../scenes/Events/EventScreenFirst';
-import LoyaltyRewards from '../scenes/LoyaltyRewards/LoyaltyRewards';
 
-
-const HomeNavigator = ({navigation}) => {
+export const BottomTabsNavigator = () => {
+  const {tourKey} = useTourGuideController();
   return (
-    <stack.Navigator
-      screenOptions={{
-        //headerBackTitleVisible: false,
-        headerTintColor: R.colors.black,
-        headerStyle: {
-          backgroundColor: R.colors.voilet,
-        },
-      }}>
-      <stack.Screen
-        name="Home"
-        component={Home}
-        options={{
-          headerTitle: () => <HeaderTitle title={'Home'} />,
-          headerLeft: () => (
-            <TouchableOpacity
-              onPress={() => {
-                navigation.openDrawer();
-              }}>
-              <Image
-                source={R.images.Menu}
-                tintColor={R.colors.white}
-                style={{margin: 10, width: 22, height: 20}}
-              />
-            </TouchableOpacity>
-          ),
-        }}
-      />
-    </stack.Navigator>
-  );
-};
-
-const MapNavigator = ({navigation}) => {
-  return (
-    <stack.Navigator
-      screenOptions={{
-        //headerBackTitleVisible: false,
-        headerTintColor: R.colors.black,
-        headerStyle: {
-          backgroundColor: R.colors.voilet,
-        },
-      }}>
-      <stack.Screen
-        name="Map"
-        component={Map}
-        options={{
-          headerTitle: () => <HeaderTitle title={'Home'} />,
-          headerLeft: () => (
-            <TouchableOpacity
-              onPress={() => {
-                navigation.openDrawer();
-              }}>
-              <Image
-                source={R.images.Menu}
-                tintColor={R.colors.white}
-                style={{margin: 10, width: 22, height: 20}}
-              />
-            </TouchableOpacity>
-          ),
-        }}
-      />
-    </stack.Navigator>
-  );
-};
-
-const ExploreNavigator = ({navigation}) => {
-  return (
-    <stack.Navigator
-      screenOptions={{
-        //headerBackTitleVisible: false,
-        headerTintColor: R.colors.black,
-        headerStyle: {
-          backgroundColor: R.colors.voilet,
-        },
-      }}>
-      <stack.Screen
+    <Tab.Navigator
+      backBehavior="history"
+      tabBarOptions={{
+        keyboardHidesTabBar: true,
+        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+      }}
+      screenOptions={{headerShown: false}}
+      lazy={true}
+      tabBar={(props) => <TabBar data={props} />}
+    >
+      <Tab.Screen name="Home" component={HomeNavigator} />
+      <Tab.Screen
         name="Explore"
-        component={Explore}
-        options={{
-          headerTitle: () => <HeaderTitle title={'Explore'} />,
-          headerLeft: () => (
-            <TouchableOpacity
-              onPress={() => {
-                navigation.openDrawer();
-              }}>
-              <Image
-                source={R.images.Menu}
-                tintColor={R.colors.white}
-                style={{margin: 10, width: 22, height: 20}}
-              />
-            </TouchableOpacity>
+        component={MallDetailsNavigator}
+        options={() => ({
+          tabBarButton: (props) => (
+            <TourGuideZone
+              zone={3}
+              text={
+                'Hey there! Welcome|Check the latest offers on your favourite brands!|2/4'
+              }
+              shape="circle"
+              tourKey={tourKey}
+            />
           ),
-        }}
+        })}
       />
-    </stack.Navigator>
+      <Tab.Screen name="Scan" component={QrCodeNavigator} />
+      <Tab.Screen name="Navigate" component={MapFirstPage} />
+      <Tab.Screen name="Rewards" component={RewardNavigator} />
+    </Tab.Navigator>
   );
 };
+
 const QrCodeNavigator = ({navigation}) => {
   return (
     <stack.Navigator
       screenOptions={{
-        // headerBackTitleVisible: false,
-        headerTintColor: R.colors.black,
-        headerStyle: {
-          backgroundColor: R.colors.voilet,
-        },
-      }}>
-      <stack.Screen
-        name="QrCode"
-        component={QrCode}
-        options={{
-          headerTitle: () => <HeaderTitle title={'Explore'} />,
-          headerLeft: () => (
-            <TouchableOpacity
-              onPress={() => {
-                navigation.openDrawer();
-              }}>
-              <Image
-                source={R.images.Menu}
-                tintColor={R.colors.white}
-                style={{margin: 10, width: 22, height: 20}}
-              />
-            </TouchableOpacity>
-          ),
-        }}
-      />
+        headerShown: false,
+        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+      }}
+    >
+      <stack.Screen name="UploadBillCapture" component={UploadBillCapture} />
     </stack.Navigator>
   );
 };
 
-const EventNavigator = ({navigation}) => {
+const MallDetailsNavigator = () => {
   return (
     <stack.Navigator
       screenOptions={{
-        //  headerBackTitleVisible: false,
-        headerTintColor: R.colors.black,
-        headerStyle: {
-          backgroundColor: R.colors.voilet,
-        },
-      }}>
-      <stack.Screen
-        name="Event"
-        component={Event}
-        options={{
-          headerTitle: () => <HeaderTitle title={'Home'} />,
-          headerLeft: () => (
-            <TouchableOpacity
-              onPress={() => {
-                navigation.openDrawer();
-              }}>
-              <Image
-                source={R.images.Menu}
-                tintColor={R.colors.white}
-                style={{margin: 10, width: 22, height: 20}}
-              />
-            </TouchableOpacity>
-          ),
-        }}
-      />
+        headerShown: false,
+        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+      }}
+    >
+      <stack.Screen name="Explore" component={Directory} />
+      <stack.Screen name="BrandListing" component={BrandListing} />
+      <stack.Screen name="BrandDetails" component={BrandDetails} />
+      <stack.Screen name="Offer" component={Offer} />
+      <stack.Screen name="BrandOffers" component={BrandOffers} />
+      <stack.Screen name="OfferByCategory" component={OfferByCategory} />
+      <stack.Screen name="SocialFeed" component={SocialFeeds} />
+      <stack.Screen name="Amenities" component={Amenities} />
     </stack.Navigator>
   );
 };
-const OkenNavigator = ({navigation}) => {
+
+const HomeNavigator = () => {
   return (
     <stack.Navigator
       screenOptions={{
-        // headerBackTitleVisible: false,
-        headerTintColor: R.colors.black,
-        headerStyle: {
-          backgroundColor: R.colors.voilet,
-        },
-      }}>
-      <stack.Screen
-        name="Oken"
-        component={LoyaltyRewards}
-        options={{
-          headerTitle: () => <HeaderTitle title={'Home'} />,
-          headerLeft: () => (
-            <TouchableOpacity
-              onPress={() => {
-                navigation.openDrawer();
-              }}>
-              <Image
-                source={R.images.Menu}
-                tintColor={R.colors.white}
-                style={{margin: 10, width: 22, height: 20}}
-              />
-            </TouchableOpacity>
-          ),
-        }}
-      />
+        headerShown: false,
+        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+      }}
+    >
+      <stack.Screen name="HomePage" component={Home} />
+      <stack.Screen name="BrandListing" component={BrandListing} />
+      <stack.Screen name="BrandDetails" component={BrandDetails} />
+      <stack.Screen name="Offer" component={Offer} />
+      <stack.Screen name="BrandOffers" component={BrandOffers} />
+      <stack.Screen name="OfferByCategory" component={OfferByCategory} />
+      <stack.Screen name="SmartParking" component={SmartParking} />
+      <stack.Screen name="SmartParkingTwo" component={SmartParkingTwo} />
+      <stack.Screen name="SmartParkingThree" component={SmartParkingThree} />
+      <stack.Screen name="SocialFeed" component={SocialFeeds} />
+      <stack.Screen name="Amenities" component={Amenities} />
     </stack.Navigator>
   );
 };
-export default function BottomTabsNavigator() {
+const RewardNavigator = () => {
   return (
-    <Tab.Navigator
-      initialRouteName="Home"
-      tabBarOptions={{
-        activeTintColor: R.colors.voilet,
-        style: {
-          paddingBottom: 5,
-          height: 65,
-        },
-        labelStyle: {
-          fontSize: 12,
-          fontWeight: 'bold',
-        },
-      }}>
-      <Tab.Screen
-        name="Home"
-        component={HomeNavigator}
-        options={{
-          tabBarLabel: 'Home',
-          tabBarIcon: ({color, size}) => (
-            <Image
-              tintColor={color}
-              source={R.images.Home_Inactive}
-              style={{height: 28, width: 28}}
-            />
-          ),
-        }}
-      />
-
-      <Tab.Screen
-        name="Map"
-        component={MapNavigator}
-        options={{
-          tabBarLabel: 'Map',
-          tabBarIcon: ({color, size}) => (
-            <Image
-              tintColor={color}
-              source={R.images.Map_Inactive}
-              style={{height: 28, width: 28}}
-            />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Explore"
-        component={ExploreNavigator}
-        options={{
-          tabBarLabel: 'Explore',
-          tabBarIcon: ({color, size}) => (
-            <Image
-              tintColor={color}
-              source={R.images.Explore_Inactive}
-              style={{height: 28, width: 28}}
-            />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="QrCode"
-        component={QrCodeNavigator}
-        options={{
-          tabBarLabel: 'QrCode',
-          tabBarIcon: ({color, size}) => (
-            <Image
-              tintColor={color}
-              source={R.images.QRCode_Inactive}
-              style={{height: 28, width: 28}}
-            />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Event"
-        component={EventNavigator}
-        options={{
-          tabBarLabel: 'Event',
-          tabBarIcon: ({color, size}) => (
-            <Image
-              tintColor={color}
-              source={R.images.Events_Inactive}
-              style={{height: 28, width: 28}}
-            />
-          ),
-        }}
-      />
-
-      <Tab.Screen
-        name="Oken"
-        component={OkenNavigator}
-        options={{
-          tabBarLabel: 'Oken',
-          tabBarIcon: ({color, size}) => (
-            <Image
-              tintColor={color}
-              source={R.images.OKEN_Inactive}
-              style={{height: 28, width: 28}}
-            />
-          ),
-        }}
-      />
-    </Tab.Navigator>
+    <stack.Navigator
+      screenOptions={{
+        headerShown: false,
+        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+      }}
+    >
+      <stack.Screen name="Rewards" component={RewardsLanding} />
+      <stack.Screen name="RewardsDetail" component={RewardsDetail} />
+      <stack.Screen name="VoucherDetails" component={NewVoucherDetails} />
+    </stack.Navigator>
   );
-}
+};

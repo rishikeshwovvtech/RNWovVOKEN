@@ -1,36 +1,36 @@
 import React from 'react';
-import {StyleSheet, Text, } from 'react-native';
-import {TouchableOpacity} from 'react-native-gesture-handler';
+import {Platform, StyleSheet, Text, TouchableOpacity} from 'react-native';
+//local import
 import R from '../R';
-import scale from '../utils/Scale';
 
-const SimpleButton = (props) => {
+export const SimpleButton = (props) => {
   return (
     <TouchableOpacity
+      activeOpacity={0.5}
       onPress={props.onPress}
-      style={[styles.LoginButton, props.customStyle]}>
-      <Text style={[styles.LoginButtonText, props.customTxtStyle]}>
+      disabled={props.disabled}
+      style={[styles.mainContainer, props.customStyle]}
+    >
+      <Text style={[styles.buttonText, props.customTxtStyle]}>
         {props.title}
       </Text>
     </TouchableOpacity>
   );
 };
 
-export default SimpleButton;
-
 const styles = StyleSheet.create({
-  LoginButton: {
-    alignItems: 'center',
+  mainContainer: {
+    width: R.dimensions.wp(80),
+    backgroundColor: R.themes.darkButtonColor,
     justifyContent: 'center',
-    backgroundColor: R.colors.white,
-    height: scale(50),
-    borderRadius: scale(22),
-    width: scale(250),
-  },
-  LoginButtonText: {
     alignItems: 'center',
-    color: R.colors.voilet,
-    fontSize: scale(22),
-    fontWeight: 'bold',
+    margin: '2.5%',
+
+    padding: Platform.OS == 'ios' ? '3%' : '1.5%',
+    alignSelf: 'center',
+  },
+  buttonText: {
+    color: R.themes.lightTextColor,
+    fontFamily: R.fonts.primaryBold,
   },
 });

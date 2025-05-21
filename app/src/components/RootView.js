@@ -16,6 +16,6 @@ export const RootView = (props) => {
 const styles = StyleSheet.create({
   rootView: {
     flex: 1,
-    backgroundColor: R.colors.white,
+    backgroundColor: R.themes.backgroundColor,
   },
 });
